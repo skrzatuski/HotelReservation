@@ -2,10 +2,10 @@ public class Reservation {
     String name;
     String surname;
     int roomId;
-    int dateStart;
-    int dateStop;
+    String dateStart;
+    String dateStop;
     /*Reservation object*/
-    public Reservation(String name, String surname, int roomId, int dateStart, int dateStop) {
+    public Reservation(String name, String surname, int roomId, String dateStart, String dateStop) {
         this.name = name;
         this.surname = surname;
         this.roomId = roomId;
@@ -21,10 +21,10 @@ public class Reservation {
     public int getRoomId(){
         return roomId;
     }
-    public int getDateStart(){
+    public String getDateStart(){
         return dateStart;
     }
-    public int getDateStop(){
+    public String getDateStop(){
         return dateStop;
     }
 }

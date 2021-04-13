@@ -6,16 +6,16 @@ public class Database extends DisplayMenu {
     String driver = "com.mysql.cj.jdbc.Driver";
     final String userName = "root";
     final String password = "";
-    Connection con = null;
-    Statement stt = null;
-    String column;
-    String sql;
-    int resId;
-    String name;
-    String surname;
-    int roomId;
-    String dateStart;
-    String dateStop;
+    private Connection con = null;
+    private Statement stt = null;
+    private String column;
+    private String sql;
+    private int resId;
+    private String name;
+    private String surname;
+    private int roomId;
+    private String dateStart;
+    private String dateStop;
 
     /*Showing all reservation*/
     void ShowReservation() {
@@ -62,6 +62,31 @@ public class Database extends DisplayMenu {
             stt.executeUpdate();
             con.close();
             System.out.println("Poprawnie dodano rezerwacje!");
+        } catch (
+                SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    /*Showing all free rooms at the moment*/
+    void ShowFreeRooms(){
+        Room r1 = new Room();
+        DisplayFreeRoomsMenu();
+        try {
+            con = DriverManager.getConnection(url + dbName, userName, password);
+            stt = con.createStatement();
+            sql = "SELECT * FROM pokoje";
+            ResultSet rs = stt.executeQuery(sql);
+            while(rs.next()){
+                r1.roomId = rs.getInt("idpokoju");
+                r1.roomName = rs.getString("nazwapokoju");
+                r1.roomPeopleCap = rs.getInt("iloscosob");
+                r1.price = rs.getInt("cena");
+                System.out.print(+r1.roomId+" ");
+                System.out.print("Nazwa pokoju:"+r1.roomName+" ");
+                System.out.print("Ilosc osob:"+r1.roomPeopleCap+" ");
+                System.out.println("Cena:"+r1.price+" ");
+            }
+            rs.close();
         } catch (
                 SQLException throwables) {
             throwables.printStackTrace();

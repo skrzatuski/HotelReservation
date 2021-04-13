@@ -4,8 +4,8 @@ public class UserInput {
     String name;
     String surname;
     int roomId;
-    int dateStart;
-    int dateStop;
+    String dateStart;
+    String dateStop;
     void ReadData() {
         Scanner s2 = new Scanner(System.in);
         System.out.println("Podaj imie: ");
@@ -14,10 +14,10 @@ public class UserInput {
         surname = s2.next();
         System.out.println("Podaj nr pokoju: ");
         roomId = s2.nextInt();
-        System.out.println("Podaj date od: ");
-        dateStart = s2.nextInt();
-        System.out.println("Podaj date do: ");
-        dateStop = s2.nextInt();
+        System.out.println("Podaj date od(RRRR-MM-DD): ");
+        dateStart = s2.next();
+        System.out.println("Podaj date do(RRRR-MM-DD): ");
+        dateStop = s2.next();
     }
     public String getName(){
         return name;
@@ -28,10 +28,10 @@ public class UserInput {
     public int getRoomId() {
         return roomId;
     }
-    public int getDateStart() {
+    public String getDateStart() {
         return dateStart;
     }
-    public int getDateStop() {
+    public String getDateStop() {
         return dateStop;
     }
 }

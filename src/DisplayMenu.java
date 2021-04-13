@@ -12,4 +12,9 @@ public class DisplayMenu {
         System.out.println("          REZERWACJE          ");
         System.out.println("------------------------------");
     }
+    void DisplayFreeRoomsMenu(){
+            System.out.println("------------------------------");
+            System.out.println("         WOLNE POKOJE         ");
+            System.out.println("------------------------------");
+        }
 }
