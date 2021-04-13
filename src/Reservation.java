@@ -4,6 +4,7 @@ public class Reservation {
     int roomId;
     int dateStart;
     int dateStop;
+    /*Reservation object*/
     public Reservation(String name, String surname, int roomId, int dateStart, int dateStop) {
         this.name = name;
         this.surname = surname;
