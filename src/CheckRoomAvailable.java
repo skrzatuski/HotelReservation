@@ -1,6 +1,4 @@
-import javax.xml.crypto.Data;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -10,7 +8,7 @@ public class CheckRoomAvailable extends Database {
     int roomId;
     boolean roomStatus;
 
-    public boolean CheckRoomAvailable(String dateStart, String dateStop, int roomId) {
+    public void CheckRoom(String dateStart, String dateStop, int roomId) {
         this.dateStart = dateStart;
         this.dateStop = dateStop;
         this.roomId = roomId;
@@ -22,20 +20,16 @@ public class CheckRoomAvailable extends Database {
                     "(rezerwacje.dataod<=" + "'" + dateStart + "'" + " AND rezerwacje.datado >=" + "'" + dateStart + "'" + ") OR " +
                     "(rezerwacje.dataod<=" + "'" + dateStop + "'" + " AND rezerwacje.datado>=" + "'" + dateStop + "'" + ")" + " OR " +
                     "(rezerwacje.dataod>=" + "'" + dateStart + "'" + " AND rezerwacje.datado<=" + "'" + dateStop + "'" + "))";
-
             ResultSet rs = stt.executeQuery(sql);
             if (rs.next() == true) {
-
                 roomStatus = true;
             } else if (rs.next() == false) {
-
                 roomStatus=false;
             }
         } catch (
     SQLException throwables) {
         throwables.printStackTrace();
     }
-        return roomStatus;
     }
 
     public String getDateStart() {

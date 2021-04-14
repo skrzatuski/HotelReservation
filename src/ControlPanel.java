@@ -17,7 +17,7 @@ public class ControlPanel extends Database {
                 }else if(wybor.equals("2")) {
                     ShowReservation();
                 }else if(wybor.equals("3")){
-                    ShowFreeRooms();
+
                 }
             }else{
                 throw new InputMismatchException("Not valid choice");
