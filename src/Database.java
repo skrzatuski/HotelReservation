@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.Scanner;
 
 public class Database extends DisplayMenu {
     final String url = "jdbc:mysql://localhost:3306/";
@@ -6,16 +7,16 @@ public class Database extends DisplayMenu {
     String driver = "com.mysql.cj.jdbc.Driver";
     final String userName = "root";
     final String password = "";
-    private Connection con = null;
-    private Statement stt = null;
-    private String column;
-    private String sql;
+    public Connection con = null;
+    public Statement stt = null;
+    public String sql;
     private int resId;
     private String name;
     private String surname;
     private int roomId;
     private String dateStart;
     private String dateStop;
+
 
     /*Showing all reservation*/
     void ShowReservation() {
@@ -49,47 +50,59 @@ public class Database extends DisplayMenu {
     void ExecuteReservation(){
         UserInput userInput = new UserInput();
         userInput.ReadData();
-        Reservation doReservation = new Reservation(userInput.getName(), userInput.getSurname(), userInput.getRoomId(), userInput.getDateStart(), userInput.getDateStop());
-        try {
-            con = DriverManager.getConnection(url + dbName, userName, password);
-            String sql = "INSERT INTO rezerwacje (imie,nazwisko,idpokoju,dataod,datado) VALUES (?,?,?,?,?)";
-            PreparedStatement stt = con.prepareStatement(sql);
-            stt.setString(1, doReservation.getName());
-            stt.setString(2, doReservation.getSurname());
-            stt.setString(3, String.valueOf(doReservation.getRoomId()));
-            stt.setString(4, String.valueOf(doReservation.getDateStart()));
-            stt.setString(5, String.valueOf(doReservation.getDateStop()));
-            stt.executeUpdate();
-            con.close();
-            System.out.println("Poprawnie dodano rezerwacje!");
-        } catch (
-                SQLException throwables) {
-            throwables.printStackTrace();
+        CheckRoomAvailable checkroom = new CheckRoomAvailable();
+        checkroom.CheckRoomAvailable(userInput.dateStart,userInput.dateStop,userInput.roomId);
+        if(checkroom.roomStatus) {
+            System.out.println("Nie można zarezerwować pokoju w tym okresie");
+        }else {
+            Reservation doReservation = new Reservation(userInput.getName(), userInput.getSurname(), userInput.getRoomId(), userInput.getDateStart(), userInput.getDateStop());
+            try {
+                con = DriverManager.getConnection(url + dbName, userName, password);
+                String sql = "INSERT INTO rezerwacje (imie,nazwisko,idpokoju,dataod,datado) VALUES (?,?,?,?,?)";
+                PreparedStatement stt = con.prepareStatement(sql);
+                stt.setString(1, doReservation.getName());
+                stt.setString(2, doReservation.getSurname());
+                stt.setString(3, String.valueOf(doReservation.getRoomId()));
+                stt.setString(4, String.valueOf(doReservation.getDateStart()));
+                stt.setString(5, String.valueOf(doReservation.getDateStop()));
+                stt.executeUpdate();
+                con.close();
+                System.out.println("Poprawnie dodano rezerwacje!");
+            } catch (
+                    SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
     }
     /*Showing all free rooms at the moment*/
     void ShowFreeRooms(){
-        Room r1 = new Room();
+
         DisplayFreeRoomsMenu();
+        Scanner s3 = new Scanner(System.in);
+        dateStart = s3.next();
+        dateStop=s3.next();
         try {
             con = DriverManager.getConnection(url + dbName, userName, password);
             stt = con.createStatement();
-            sql = "SELECT * FROM pokoje";
+            sql = "SELECT 1 WHERE EXISTS " +
+                    "(SELECT * FROM rezerwacje WHERE rezerwacje.idpokoju=1 AND " +
+                    "(rezerwacje.dataod<="+"'"+dateStart+"'" + " AND rezerwacje.datado >="+"'"+dateStart+"'"+") OR " +
+                    "(rezerwacje.dataod<="+"'"+dateStop+"'"+" AND rezerwacje.datado>="+"'"+dateStop+"'"+")"+ " OR " +
+                    "(rezerwacje.dataod>="+"'"+dateStart+"'"+" AND rezerwacje.datado<="+"'"+dateStop+"'"+"))";
+
             ResultSet rs = stt.executeQuery(sql);
-            while(rs.next()){
-                r1.roomId = rs.getInt("idpokoju");
-                r1.roomName = rs.getString("nazwapokoju");
-                r1.roomPeopleCap = rs.getInt("iloscosob");
-                r1.price = rs.getInt("cena");
-                System.out.print(+r1.roomId+" ");
-                System.out.print("Nazwa pokoju:"+r1.roomName+" ");
-                System.out.print("Ilosc osob:"+r1.roomPeopleCap+" ");
-                System.out.println("Cena:"+r1.price+" ");
+            if(rs.next()==true){
+                System.out.println("Nie można zarezerwować pokoju w tym okresie");
+            }else if (rs.next()==false)
+            {
+                System.out.println("Pokoj wolny");
             }
+
             rs.close();
         } catch (
                 SQLException throwables) {
             throwables.printStackTrace();
         }
     }
+
 }

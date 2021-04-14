@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class ControlPanel extends Database {
     String wybor;
+
     DisplayMenu dmenu1 = new DisplayMenu();
     Scanner input = new Scanner(System.in);
     void ChooseMenu(){
