@@ -1,7 +1,7 @@
 public class Room {
     String roomName;
     String status;
-    int roomPeopleCap;
+    int roomPersonCap;
     int roomId;
     int price;
 
@@ -9,7 +9,7 @@ public class Room {
         return roomName;
     }
     public int getRoomPeopleCap() {
-        return roomPeopleCap;
+        return roomPersonCap;
     }
     public int getRoomId() {
         return roomId;

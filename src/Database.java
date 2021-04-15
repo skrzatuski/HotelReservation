@@ -57,4 +57,9 @@ public class Database extends DisplayMenu {
             Reservation reservation = new Reservation(userInput.getName(), userInput.getSurname(), userInput.getRoomId(), userInput.getDateStart(), userInput.getDateStop());
         }
     }
+    /*Delete reservation by ID*/
+    void DeleteReservation(){
+        DeleteReservation deleteReservation = new DeleteReservation();
+        deleteReservation.DeleteReservation();
+    }
 }
