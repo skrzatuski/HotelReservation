@@ -43,4 +43,14 @@ public class Reservation {
     public void setDateStop(String dateStop) {
         this.dateStop = dateStop;
     }
+
+    @Override
+    public String toString() {
+        return reservationId +
+                " " + name +
+                " " + surname +
+                " " + roomId +
+                " " + dateStart +
+                " " + dateStop;
+    }
 }

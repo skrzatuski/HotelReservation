@@ -12,29 +12,24 @@ public class ShowAllReservation {
     DisplayMenu displaymenu;
     Connection con = null;
     Statement stt = null;
-    Reservation userinput;
+    Reservation reservation;
     final private String SQL_SELECT_REZERWACJE_pokaz = "SELECT * FROM rezerwacje";
     public void ShowReservation() {
         displaymenu = new DisplayMenu();
         displaymenu.displayReservationMenu();
-        userinput = new Reservation();
+        reservation = new Reservation();
         try{
             con = DatabaseConnection.getCon();
             stt = con.createStatement();
             ResultSet rs = stt.executeQuery(SQL_SELECT_REZERWACJE_pokaz);
             while(rs.next()){
-                userinput.setReservationId(rs.getInt("idzamowienia"));
-                userinput.setName(rs.getString("imie"));
-                userinput.setSurname(rs.getString("nazwisko"));
-                userinput.setRoomId(rs.getInt("idpokoju"));
-                userinput.setDateStart(rs.getString("dataod"));
-                userinput.setDateStop(rs.getString("datado"));
-                System.out.print(userinput.getReservationId()+" ");
-                System.out.print(userinput.getName()+" ");
-                System.out.print(userinput.getSurname()+" ");
-                System.out.print(userinput.getRoomId()+" ");
-                System.out.print(userinput.getDateStart()+" ");
-                System.out.println(userinput.getDateStop()+" ");
+                reservation.setReservationId(rs.getInt("idzamowienia"));
+                reservation.setName(rs.getString("imie"));
+                reservation.setSurname(rs.getString("nazwisko"));
+                reservation.setRoomId(rs.getInt("idpokoju"));
+                reservation.setDateStart(rs.getString("dataod"));
+                reservation.setDateStop(rs.getString("datado"));
+                System.out.println(reservation);
             }
             rs.close();
         } catch (
