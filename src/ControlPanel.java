@@ -1,24 +1,36 @@
-import javax.xml.crypto.Data;
+import displays.DisplayMenu;
+import inputs.Reservation;
+import reservation.CheckRoomAvailable;
+import reservation.CreateReservation;
+import reservation.DeleteReservation;
+import reservation.ShowAllReservation;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ControlPanel extends Database {
-    String wybor;
 
-    DisplayMenu dmenu1 = new DisplayMenu();
+public class ControlPanel extends Reservation {
+    private int choose;
+    private DisplayMenu displayMenu = new DisplayMenu();
+    ShowAllReservation showAllReservation;
+    CreateReservation createReservation;
+    CheckRoomAvailable checkRoomAvailable;
+    DeleteReservation deleteReservation;
     Scanner input = new Scanner(System.in);
     void ChooseMenu(){
         try {
-            dmenu1.DisplayChooseMenu();
-            wybor = input.next();
-            if (wybor.equals("1")||wybor.equals("2")||wybor.equals("3")) {
-                if(wybor.equals("1")) {
-                    ExecuteReservation();
-                }else if(wybor.equals("2")) {
-                    ShowReservation();
-                }else if(wybor.equals("3")){
-                    DeleteReservation();
-                }
+            deleteReservation = new DeleteReservation();
+            checkRoomAvailable = new CheckRoomAvailable();
+            showAllReservation = new ShowAllReservation();
+            displayMenu.displayChooseMenu();
+            choose = input.nextInt();
+            createReservation = new CreateReservation();
+            if (choose == 1) {
+                createReservation.createReservation1();
+            }else if(choose==2) {
+                showAllReservation.ShowReservation();
+            }else if(choose==3) {
+                deleteReservation.deleteReservation();
             }else{
                 throw new InputMismatchException("Not valid choice");
             }

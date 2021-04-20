@@ -1,20 +1,20 @@
-import java.sql.DriverManager;
+package reservation;
+
+import config.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
-public class CheckRoomAvailable extends Database {
-    String dateStart;
-    String dateStop;
-    int roomId;
+public class CheckRoomAvailable{
     boolean roomStatus;
-
-    public void CheckRoom(String dateStart, String dateStop, int roomId) {
-        this.dateStart = dateStart;
-        this.dateStop = dateStop;
-        this.roomId = roomId;
+    Statement stt = null;
+    String sql;
+    public boolean CheckRoom(String dateStart, String dateStop) {
         try {
-            con = DriverManager.getConnection(url + dbName, userName, password);
-            stt = con.createStatement();
+            DatabaseConnection.getCon();
+            stt = DatabaseConnection.getCon().createStatement();
+            System.out.println(dateStart);
+            System.out.println(dateStop);
             sql = "SELECT 1 WHERE EXISTS " +
                     "(SELECT * FROM rezerwacje WHERE rezerwacje.idpokoju=1 AND " +
                     "(rezerwacje.dataod<=" + "'" + dateStart + "'" + " AND rezerwacje.datado >=" + "'" + dateStart + "'" + ") OR " +
@@ -27,20 +27,10 @@ public class CheckRoomAvailable extends Database {
                 roomStatus=false;
             }
         } catch (
-    SQLException throwables) {
-        throwables.printStackTrace();
-    }
-    }
-
-    public String getDateStart() {
-        return dateStart;
+                SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return roomStatus;
     }
 
-    public String getDateStop() {
-        return dateStop;
-    }
-
-    public int getRoomId() {
-        return roomId;
-    }
 }
