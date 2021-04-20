@@ -23,9 +23,9 @@ public class CheckRoomAvailable{
                     " rezerwacje.idpokoju="+roomId+" AND " +
                     "(rezerwacje.dataod>=" + "'" + dateStart + "'" + " AND rezerwacje.datado<=" + "'" + dateStop + "'" + "))";
             ResultSet rs = stt.executeQuery(sql);
-            if (rs.next() == true) {
+            if (rs.next()) {
                 roomStatus = true;
-            } else if (rs.next() == false) {
+            } else if (rs.next()) {
                 roomStatus=false;
             }
         } catch (

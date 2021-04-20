@@ -1,6 +1,5 @@
 import displays.DisplayMenu;
 import inputs.Reservation;
-import reservation.CheckRoomAvailable;
 import reservation.CreateReservation;
 import reservation.DeleteReservation;
 import reservation.ShowAllReservation;
@@ -10,8 +9,7 @@ import java.util.Scanner;
 
 
 public class ControlPanel extends Reservation {
-    private int choose;
-    private DisplayMenu displayMenu = new DisplayMenu();
+    private final DisplayMenu displayMenu = new DisplayMenu();
     ShowAllReservation showAllReservation;
     CreateReservation createReservation;
     DeleteReservation deleteReservation;
@@ -21,13 +19,13 @@ public class ControlPanel extends Reservation {
             deleteReservation = new DeleteReservation();
             showAllReservation = new ShowAllReservation();
             displayMenu.displayChooseMenu();
-            choose = input.nextInt();
+            int choice = input.nextInt();
             createReservation = new CreateReservation();
-            if (choose == 1) {
+            if (choice == 1) {
                 createReservation.createReservation1();
-            }else if(choose==2) {
+            }else if(choice ==2) {
                 showAllReservation.ShowReservation();
-            }else if(choose==3) {
+            }else if(choice ==3) {
                 deleteReservation.deleteReservation();
             }else{
                 throw new InputMismatchException("Not valid choice");
