@@ -14,13 +14,11 @@ public class ControlPanel extends Reservation {
     private DisplayMenu displayMenu = new DisplayMenu();
     ShowAllReservation showAllReservation;
     CreateReservation createReservation;
-    CheckRoomAvailable checkRoomAvailable;
     DeleteReservation deleteReservation;
     Scanner input = new Scanner(System.in);
     void ChooseMenu(){
         try {
             deleteReservation = new DeleteReservation();
-            checkRoomAvailable = new CheckRoomAvailable();
             showAllReservation = new ShowAllReservation();
             displayMenu.displayChooseMenu();
             choose = input.nextInt();

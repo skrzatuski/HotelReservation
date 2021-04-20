@@ -18,13 +18,11 @@ public class CreateReservation {
         try {
             Connection con = DatabaseConnection.getCon();
             reservationUserInput.readReserevationUserInput();
-            reservationUserInput.getReservationUserInput();
             reservation = reservationUserInput.getReservationUserInput();
-            if(checkRoomAvailable.CheckRoom(reservation.getDateStart(), reservation.getDateStop())){
+            if(checkRoomAvailable.CheckRoom(reservation.getDateStart(), reservation.getDateStop(),reservation.getRoomId())){
                 System.out.println("Nie można zarezerwowac pokoju w tym okresie");
             }else {
                 PreparedStatement preparedStatement = con.prepareStatement(SQL_INSERT_VALUE);
-                System.out.println(reservation.getName());
                 preparedStatement.setString(1, reservation.getName());
                 preparedStatement.setString(2, reservation.getSurname());
                 preparedStatement.setString(3, String.valueOf(reservation.getRoomId()));
