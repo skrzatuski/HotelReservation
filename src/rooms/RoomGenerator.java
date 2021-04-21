@@ -21,7 +21,8 @@ public class RoomGenerator {
             preparedStatement.setInt(3,room.getPrice());
             preparedStatement.executeUpdate();
             connection.close();
-            System.out.println("Poprawnie dodano pokoj");
+            System.out.println("Poprawnie dodano pokoj!");
+            System.out.println(room);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

@@ -1,6 +1,7 @@
 package inputs;
 
 public class Room {
+    private int roomId;
     private String roomName;
     private int roomPersonCap;
     private int price;
@@ -28,12 +29,19 @@ public class Room {
         this.price = price;
     }
 
+    public int getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
+    }
+
     @Override
     public String toString() {
-        return "Room{" +
-                "roomName='" + roomName + '\'' +
-                ", roomPersonCap=" + roomPersonCap +
-                ", price=" + price +
-                '}';
+        return roomId + "  " +
+                roomName + " " +
+                roomPersonCap + " " +
+                price;
     }
 }
