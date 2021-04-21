@@ -17,12 +17,12 @@ public class DeleteReservation {
         try {
             Connection con = DatabaseConnection.getCon();
             Statement stt = con.createStatement();
-            String sql = "DELETE FROM rezerwacje WHERE idzamowienia=" + "'" + reservationId + "'";
+            String SQL_DELETE_RESERVATION = "DELETE FROM rezerwacje WHERE idzamowienia=" + "'" + reservationId + "'";
             System.out.println("Czy na pewno chcesz usunać " + reservationId + " rezerwacje? T)ak/N)ie");
             conf = scanner.next().toUpperCase();
             try {
                 if (conf.equals("T")) {
-                    stt.executeUpdate(sql);
+                    stt.executeUpdate(SQL_DELETE_RESERVATION);
                     System.out.println("Poprawnie usunięto rezerwacje");
                 } else if (conf.equals("N")) {
                     System.out.println("Nie usunieto rezerwacji");

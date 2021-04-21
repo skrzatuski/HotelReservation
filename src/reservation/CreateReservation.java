@@ -17,7 +17,7 @@ public class CreateReservation {
         checkRoomAvailable = new CheckRoomAvailable();
         try {
             Connection con = DatabaseConnection.getCon();
-            reservationUserInput.readReserevationUserInput();
+            reservationUserInput.readReservationUserInput();
             reservation = reservationUserInput.getReservationUserInput();
             if(checkRoomAvailable.CheckRoom(reservation.getDateStart(), reservation.getDateStop(),reservation.getRoomId())){
                 System.out.println("Nie można zarezerwowac pokoju w tym okresie");

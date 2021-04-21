@@ -13,7 +13,7 @@ public class ShowAllReservation {
     Connection con = null;
     Statement stt = null;
     Reservation reservation;
-    final private String SQL_SELECT_REZERWACJE_pokaz = "SELECT * FROM rezerwacje";
+    final private String SQL_SELECT_RESERVATION = "SELECT * FROM rezerwacje";
     public void ShowReservation() {
         displaymenu = new DisplayMenu();
         displaymenu.displayReservationMenu();
@@ -21,7 +21,7 @@ public class ShowAllReservation {
         try{
             con = DatabaseConnection.getCon();
             stt = con.createStatement();
-            ResultSet rs = stt.executeQuery(SQL_SELECT_REZERWACJE_pokaz);
+            ResultSet rs = stt.executeQuery(SQL_SELECT_RESERVATION);
             while(rs.next()){
                 reservation.setReservationId(rs.getInt("idzamowienia"));
                 reservation.setName(rs.getString("imie"));

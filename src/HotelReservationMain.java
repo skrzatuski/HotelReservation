@@ -1,10 +1,11 @@
+import menu.ControlPanel;
 
 public class HotelReservationMain {
     public static void main(String[] args) {
-        ControlPanel c1 = new ControlPanel();
+        ControlPanel controlPanel = new ControlPanel();
         /*Main loop*/
         do{
-            c1.ChooseMenu();
+            controlPanel.ChooseMenu();
         }while(true);
     }
 }

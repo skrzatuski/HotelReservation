@@ -1,23 +1,27 @@
+package menu;
+
 import displays.DisplayMenu;
-import inputs.Reservation;
 import reservation.CreateReservation;
 import reservation.DeleteReservation;
 import reservation.ShowAllReservation;
+import rooms.RoomGenerator;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
-public class ControlPanel extends Reservation {
+public class ControlPanel{
     private final DisplayMenu displayMenu = new DisplayMenu();
     ShowAllReservation showAllReservation;
     CreateReservation createReservation;
     DeleteReservation deleteReservation;
+    RoomGenerator roomGenerator;
     Scanner input = new Scanner(System.in);
-    void ChooseMenu(){
+    public void ChooseMenu(){
         try {
             deleteReservation = new DeleteReservation();
             showAllReservation = new ShowAllReservation();
+            roomGenerator = new RoomGenerator();
             displayMenu.displayChooseMenu();
             int choice = input.nextInt();
             createReservation = new CreateReservation();
@@ -27,6 +31,8 @@ public class ControlPanel extends Reservation {
                 showAllReservation.ShowReservation();
             }else if(choice ==3) {
                 deleteReservation.deleteReservation();
+            }else if(choice == 4) {
+               roomGenerator.CreateRoom();
             }else{
                 throw new InputMismatchException("Not valid choice");
             }

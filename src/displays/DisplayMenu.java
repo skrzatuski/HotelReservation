@@ -11,6 +11,7 @@ public class DisplayMenu {
         System.out.println("1 - Dokonaj rezerwacji");
         System.out.println("2 - Weświetl rezerwacje");
         System.out.println("3 - Usun rezerwacje");
+        System.out.println("4 - Dodaj Pokoj");
     }
     public void displayReservationMenu(){
         System.out.println(LINE_SEPARATOR);

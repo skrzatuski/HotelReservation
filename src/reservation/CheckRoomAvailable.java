@@ -6,15 +6,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class CheckRoomAvailable{
-    boolean roomStatus;
-    Statement stt = null;
-    String sql;
+    private boolean roomStatus;
+    private Statement stt = null;
+    private String sql;
+    private ResultSet resultSet;
     public boolean CheckRoom(String dateStart, String dateStop,int roomId) {
         try {
             DatabaseConnection.getCon();
             stt = DatabaseConnection.getCon().createStatement();
-            System.out.println(dateStart);
-            System.out.println(dateStop);
             sql = "SELECT 1 WHERE EXISTS " +
                     "(SELECT * FROM rezerwacje WHERE rezerwacje.idpokoju="+roomId+" AND " +
                     "(rezerwacje.dataod<=" + "'" + dateStart + "'" + " AND rezerwacje.datado >=" + "'" + dateStart + "'" + ") OR "  +
@@ -22,17 +21,20 @@ public class CheckRoomAvailable{
                     "(rezerwacje.dataod<=" + "'" + dateStop + "'" + " AND rezerwacje.datado>=" + "'" + dateStop + "'" + ")" + " OR " +
                     " rezerwacje.idpokoju="+roomId+" AND " +
                     "(rezerwacje.dataod>=" + "'" + dateStart + "'" + " AND rezerwacje.datado<=" + "'" + dateStop + "'" + "))";
-            ResultSet rs = stt.executeQuery(sql);
-            if (rs.next()) {
-                roomStatus = true;
-            } else if (rs.next()) {
-                roomStatus=false;
-            }
+            resultSet = stt.executeQuery(sql);
+            checkRoomStatus();
         } catch (
                 SQLException throwables) {
             throwables.printStackTrace();
         }
         return roomStatus;
+    }
+    public void checkRoomStatus() throws SQLException {
+        if (resultSet.next()) {
+            roomStatus = true;
+        } else if (resultSet.next()) {
+            roomStatus=false;
+        }
     }
 
 }

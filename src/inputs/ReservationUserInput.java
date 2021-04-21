@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ReservationUserInput {
     private Reservation reservation;
-    public void readReserevationUserInput(){
+    public void readReservationUserInput(){
         reservation = new Reservation();
         Scanner scannerUserInput = new Scanner(System.in);
         System.out.println("Podaj imie: ");
