@@ -11,33 +11,27 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
-public class ControlPanel{
+public class MainMenu {
     private final DisplayMenu displayMenu = new DisplayMenu();
-    ShowAllReservation showAllReservation;
-    CreateReservation createReservation;
-    DeleteReservation deleteReservation;
+    ReservationMenu reservationMenu;
     RoomGenerator roomGenerator;
     ShowAllRooms showAllRooms;
     Scanner input = new Scanner(System.in);
+    RoomMenu roomMenu;
     public void ChooseMenu(){
         try {
-            deleteReservation = new DeleteReservation();
-            showAllReservation = new ShowAllReservation();
-            showAllRooms = new ShowAllRooms();
+            roomMenu = new RoomMenu();
+            reservationMenu = new ReservationMenu();
             roomGenerator = new RoomGenerator();
-            displayMenu.displayChooseMenu();
+            displayMenu.mainChooseMenu();
             int choice = input.nextInt();
-            createReservation = new CreateReservation();
+
             if (choice == 1) {
-                createReservation.createReservation1();
+                reservationMenu.chooseMenu();
             }else if(choice ==2) {
-                showAllReservation.ShowReservation();
-            }else if(choice ==3) {
-                deleteReservation.deleteReservation();
-            }else if(choice == 4) {
-               roomGenerator.CreateRoom();
-            }else if(choice == 5){
-                showAllRooms.showAllRooms();
+                roomMenu.chooseMenu();
+            }else if(choice ==0) {
+                System.exit(0);
             }else{
                 throw new InputMismatchException("Not valid choice");
             }
