@@ -20,7 +20,6 @@ public class DBExistCheck {
                 dbStatus = true;
                 System.out.println("Connection successful, checking db exists");
                 rs = con.getMetaData().getCatalogs();
-                System.out.println(dbStatus);
             while (rs.next()) {
                 catalogs = rs.getString(1);
                 if (dbname.equals(catalogs)) {
@@ -34,5 +33,9 @@ public class DBExistCheck {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    public boolean isDbStatus() {
+        return dbStatus;
     }
 }
