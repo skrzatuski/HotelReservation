@@ -29,7 +29,7 @@ public class RoomMenu {
         }else if(choice == 3){
 
         }else if(choice == 0){
-            return;
+
         }else{
             throw new InputMismatchException("wrong choice");
         }

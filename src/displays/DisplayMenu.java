@@ -1,7 +1,5 @@
 package displays;
 
-import config.*;
-
 public class DisplayMenu {
     public String LINE_SEPARATOR = ("------------------------------");
     public void reservationChooseMenu(){
@@ -16,6 +14,7 @@ public class DisplayMenu {
         System.out.println("1 - Dodaj pokoj");
         System.out.println("2 - Pokaz wszystkie pokoje");
         System.out.println("3 - Wprowadz zmiany do pokoju");
+        System.out.println("4 - Wprowadz zmiany do pokoju");
         System.out.println("0 - Wroc do głownego menu");
 
     }
