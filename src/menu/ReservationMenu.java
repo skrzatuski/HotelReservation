@@ -23,19 +23,22 @@ public class ReservationMenu {
         deleteReservation = new DeleteReservation();
         scanner = new Scanner(System.in);
         choice = scanner.nextInt();
-        if(choice == 1){
-            displayMenu.displayReservationMenu();
-            createReservation.createReservation1();
-        }else if(choice == 2){
-            displayMenu.displayReservationMenu();
-            showAllReservation.ShowReservation();
-        }else if(choice == 3){
-            displayMenu.deleteReservation();
-            deleteReservation.deleteReservation();
-        }else if(choice == 0){
-            return;
-        }else{
-            throw new InputMismatchException("wrong choice");
+        switch(choice){
+            case 1:
+                displayMenu.displayReservationMenu();
+                createReservation.createReservation1();
+                break;
+            case 2:
+                displayMenu.displayReservationMenu();
+                showAllReservation.ShowReservation();
+                break;
+            case 3:
+                displayMenu.deleteReservation();
+                deleteReservation.deleteReservation();
+                break;
+        }
+        if (choice != 1 && choice != 2 && choice != 3) {
+            System.out.println("Zły wybór");
         }
     }
 }

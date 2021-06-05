@@ -17,6 +17,7 @@ public class ReservationUserInput {
         reservation.setDateStart(scannerUserInput.next());
         System.out.println("Podaj date do(RRRR-MM-DD): ");
         reservation.setDateStop(scannerUserInput.next());
+
     }
     public Reservation getReservationUserInput() {
         return this.reservation;

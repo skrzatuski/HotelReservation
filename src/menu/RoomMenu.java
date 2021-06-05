@@ -13,25 +13,32 @@ public class RoomMenu {
     private DisplayMenu displayMenu;
     private RoomGenerator roomGenerator;
     private ShowAllRooms showAllRooms;
-    public void chooseMenu(){
+    public void chooseMenu() {
         displayMenu = new DisplayMenu();
         roomGenerator = new RoomGenerator();
         showAllRooms = new ShowAllRooms();
         displayMenu.roomChoseMenu();
         scanner = new Scanner(System.in);
         choice = scanner.nextInt();
-        if(choice == 1){
-            displayMenu.roomMenu();
-            roomGenerator.CreateRoom();
-        }else if(choice == 2){
-            displayMenu.roomMenu();
-            showAllRooms.showAllRooms();
-        }else if(choice == 3){
-
-        }else if(choice == 0){
-
-        }else{
-            throw new InputMismatchException("wrong choice");
+            switch (choice) {
+                case 1:
+                    displayMenu.roomMenu();
+                    roomGenerator.CreateRoom();
+                    break;
+                case 2:
+                    displayMenu.roomMenu();
+                    showAllRooms.showAllRooms();
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 0:
+                    break;
+            }
+            if (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 0) {
+                System.out.println("Zły wybór");
+            }
         }
     }
-}
+

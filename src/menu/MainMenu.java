@@ -18,22 +18,27 @@ public class MainMenu {
     ShowAllRooms showAllRooms;
     Scanner input = new Scanner(System.in);
     RoomMenu roomMenu;
-    public void ChooseMenu(){
+
+    public void ChooseMenu() {
         try {
             roomMenu = new RoomMenu();
             reservationMenu = new ReservationMenu();
             roomGenerator = new RoomGenerator();
             displayMenu.mainChooseMenu();
             int choice = input.nextInt();
-
-            if (choice == 1) {
-                reservationMenu.chooseMenu();
-            }else if(choice ==2) {
-                roomMenu.chooseMenu();
-            }else if(choice ==0) {
-                System.exit(0);
-            }else{
-                throw new InputMismatchException("Not valid choice");
+            switch(choice) {
+                case 1:
+                    reservationMenu.chooseMenu();
+                    break;
+                case 2:
+                    roomMenu.chooseMenu();
+                    break;
+                case 3:
+                    System.exit(0);
+                    break;
+            }
+            if (choice != 1 && choice != 2 && choice != 3) {
+                System.out.println("Zły wybór");
             }
         }catch(InputMismatchException ex){
             System.out.println("Zły wybór, wybierz ponownie");
