@@ -36,8 +36,10 @@ public class ReservationMenu {
                 displayMenu.deleteReservation();
                 deleteReservation.deleteReservation();
                 break;
+            case 0:
+                break;
         }
-        if (choice != 1 && choice != 2 && choice != 3) {
+        if (choice != 1 && choice != 2 && choice != 3 && choice !=0) {
             System.out.println("Zły wybór");
         }
     }

@@ -39,8 +39,7 @@ public class Room {
 
     @Override
     public String toString() {
-        return roomId + "  " +
-                roomName + " " +
+        return roomName + " " +
                 roomPersonCap + " " +
                 price;
     }
