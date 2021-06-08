@@ -34,7 +34,7 @@ public class ReservationUserInput {
         System.out.println("Podaj date do(yyyy-MM-dd): ");
         reservation.setDateStop(scannerUserInput.next());
                 } while (dataCheck.checkingData(reservation.getDateStop()));
-            }while(dataCheck.dataStopGreaterThanDataStart(reservation.getDateStart(), reservation.getDateStop()));
+            }while(dataCheck.isDataStopGreaterThanDataStart(reservation.getDateStart(), reservation.getDateStop()));
     }
     public void userInputRoomID(){
             do {

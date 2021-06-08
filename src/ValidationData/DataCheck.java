@@ -16,7 +16,7 @@ public class DataCheck {
         }
         return false;
     }
-    public boolean dataStopGreaterThanDataStart(String a, String b) {
+    public boolean isDataStopGreaterThanDataStart(String a, String b) {
         SimpleDateFormat s1 = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date dateStart = s1.parse(a);
