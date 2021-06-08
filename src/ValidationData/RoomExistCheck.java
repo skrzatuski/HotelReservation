@@ -23,7 +23,7 @@ public class RoomExistCheck {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        System.out.println("Nie pokoju o takim ID");
+        System.out.println("Nie ma pokoju o takim ID");
         return true;
     }
 }
