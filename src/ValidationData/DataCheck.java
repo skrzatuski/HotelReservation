@@ -10,6 +10,7 @@ public class DataCheck {
         sdfrmt.setLenient(false);
         try{
             Date javaDate = sdfrmt.parse(data);
+            
         } catch (ParseException e) {
             System.out.println("Błędna data");
             return true;
