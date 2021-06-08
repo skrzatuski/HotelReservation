@@ -14,7 +14,7 @@ public class ShowAllReservation {
     Statement stt = null;
     Reservation reservation;
     final private String SQL_SELECT_RESERVATION = "SELECT * FROM rezerwacje";
-    public void ShowReservation() {
+    public void showReservation() {
         displaymenu = new DisplayMenu();
         displaymenu.displayReservationMenu();
         reservation = new Reservation();

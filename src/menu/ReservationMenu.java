@@ -5,7 +5,6 @@ import reservation.CreateReservation;
 import reservation.DeleteReservation;
 import reservation.ShowAllReservation;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ReservationMenu {
@@ -30,7 +29,7 @@ public class ReservationMenu {
                 break;
             case 2:
                 displayMenu.displayReservationMenu();
-                showAllReservation.ShowReservation();
+                showAllReservation.showReservation();
                 break;
             case 3:
                 displayMenu.deleteReservation();

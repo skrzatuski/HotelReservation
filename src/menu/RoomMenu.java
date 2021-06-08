@@ -4,7 +4,6 @@ import displays.DisplayMenu;
 import rooms.RoomGenerator;
 import rooms.ShowAllRooms;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class RoomMenu {
@@ -23,7 +22,7 @@ public class RoomMenu {
             switch (choice) {
                 case 1:
                     displayMenu.roomMenu();
-                    roomGenerator.CreateRoom();
+                    roomGenerator.createRoom();
                     break;
                 case 2:
                     displayMenu.roomMenu();

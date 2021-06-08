@@ -13,29 +13,29 @@ public class ReservationUserInput {
     Scanner scannerUserInput = new Scanner(System.in);
     public void readReservationUserInput(){
         reservation = new Reservation();
-        UserInputFirstNameSurname();
-        UserInputRoomID();
-        UserInputDataStart();
-        UserInputDataStop();
+        userInputFirstNameSurname();
+        userInputRoomID();
+        userInputDataStart();
+        userInputDataStop();
     }
     public Reservation getReservationUserInput() {
         return this.reservation;
     }
-    public void UserInputDataStart(){
+    public void userInputDataStart(){
         do{
-            System.out.println("Podaj date od(YYYY-mm-dd): ");
+            System.out.println("Podaj date od(yyyy-MM-dd): ");
             reservation.setDateStart(scannerUserInput.next());
-        }while(dataCheck.CheckingData(reservation.getDateStart()));
+        }while(dataCheck.checkingData(reservation.getDateStart()));
     }
-    public void UserInputDataStop() {
+    public void userInputDataStop() {
         //do {
             do {
-        System.out.println("Podaj date do(YYYY-mm-d): ");
+        System.out.println("Podaj date do(yyyy-MM-dd): ");
         reservation.setDateStop(scannerUserInput.next());
-                } while (dataCheck.CheckingData(reservation.getDateStop()));
+                } while (dataCheck.checkingData(reservation.getDateStop()));
            // }while(DataStartStopCheck());
     }
-    public void UserInputRoomID(){
+    public void userInputRoomID(){
             do {
                     System.out.println("Podaj nr pokoju: ");
                     if(scannerUserInput.hasNextInt()) {
@@ -45,9 +45,9 @@ public class ReservationUserInput {
                         System.out.println("Zly format, podaj liczbe");
                         scannerUserInput.next();
                     }
-            } while (roomExistCheck.RoomExist(reservation.getRoomId()));
+            } while (roomExistCheck.roomExist(reservation.getRoomId()));
     }
-    public void UserInputFirstNameSurname(){
+    public void userInputFirstNameSurname(){
         System.out.println("Podaj imie: ");
         reservation.setName(scannerUserInput.next());
         System.out.println("Podaj nazwisko: ");

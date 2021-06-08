@@ -7,7 +7,7 @@ public class RoomGenerator {
     Connection connection;
     RoomGeneratorUserInput roomGeneratorUserInput;
     Room room;
-    public void CreateRoom(){
+    public void createRoom(){
         roomGeneratorUserInput = new RoomGeneratorUserInput();
         room = new Room();
         String SQL_INSERT_VALUE = "INSERT INTO pokoje (nazwapokoju,iloscosob,cena) VALUES (?,?,?)";

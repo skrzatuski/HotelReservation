@@ -10,7 +10,7 @@ public class CheckRoomAvailable{
     private Statement stt = null;
     private String sql;
     private ResultSet resultSet;
-    public boolean CheckRoom(String dateStart, String dateStop,int roomId) {
+    public boolean checkRoom(String dateStart, String dateStop, int roomId) {
         try {
             DatabaseConnection.getCon();
             stt = DatabaseConnection.getCon().createStatement();
@@ -32,9 +32,8 @@ public class CheckRoomAvailable{
     public void checkRoomStatus() throws SQLException {
         if (resultSet.next()) {
             roomStatus = true;
-        } else if (resultSet.next()) {
+        } else{
             roomStatus=false;
         }
     }
-
 }

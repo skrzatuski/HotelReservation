@@ -9,14 +9,14 @@ public class RoomGeneratorUserInput {
     public void readRoomGeneratorUserInput(){
         room = new Room();
         scanner = new Scanner(System.in);
-        UserInputRoomName();
-        UserInputRoomPersonCap();
-        UserInputRoomPrice();
+        userInputRoomName();
+        userInputRoomPersonCap();
+        userInputRoomPrice();
     }
     public Room getRoomUserInput(){
         return this.room;
     }
-    public void UserInputRoomPersonCap(){
+    public void userInputRoomPersonCap(){
         status = false;
         do{
             System.out.println("Podaj ilu osobowy jest pokoj: ");
@@ -31,11 +31,11 @@ public class RoomGeneratorUserInput {
             }
         }while(status);
     }
-    public void UserInputRoomName(){
+    public void userInputRoomName(){
         System.out.println("Podaj nazwe pokoju: ");
         room.setRoomName(scanner.next());
     }
-    public void UserInputRoomPrice(){
+    public void userInputRoomPrice(){
         status = false;
         do{
             System.out.println("Podaj cene pokoju: ");

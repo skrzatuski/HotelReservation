@@ -5,7 +5,7 @@ import java.sql.*;
 
 public class RoomExistCheck {
 
-    public boolean RoomExist(int roomId){
+    public boolean roomExist(int roomId){
         String SQL_SELECT = "SELECT idpokoju FROM pokoje WHERE idpokoju=" + roomId;
         Connection con = DatabaseConnection.getCon();
         Statement stt = null;

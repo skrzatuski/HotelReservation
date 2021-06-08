@@ -22,7 +22,6 @@ public class HotelReservationMain {
             createDatabase.CreateTables();
             exampleDataInsert.DataInsert();
         }
-
         /*Main loop*/
         do{
             mainMenu.ChooseMenu();
