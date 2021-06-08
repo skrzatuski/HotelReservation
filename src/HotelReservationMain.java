@@ -3,9 +3,6 @@ import config.DBExistCheck;
 import config.ExampleDataInsert;
 import menu.MainMenu;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-
 public class HotelReservationMain {
     public static void main(String[] args) {
         MainMenu mainMenu = new MainMenu();

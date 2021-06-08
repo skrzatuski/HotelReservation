@@ -25,15 +25,16 @@ public class ReservationUserInput {
         do{
             System.out.println("Podaj date od(yyyy-MM-dd): ");
             reservation.setDateStart(scannerUserInput.next());
+            System.out.println(reservation.getDateStart());
         }while(dataCheck.checkingData(reservation.getDateStart()));
     }
     public void userInputDataStop() {
-        //do {
+        do {
             do {
         System.out.println("Podaj date do(yyyy-MM-dd): ");
         reservation.setDateStop(scannerUserInput.next());
                 } while (dataCheck.checkingData(reservation.getDateStop()));
-           // }while(DataStartStopCheck());
+            }while(dataCheck.dataStopGreaterThanDataStart(reservation.getDateStart(), reservation.getDateStop()));
     }
     public void userInputRoomID(){
             do {
