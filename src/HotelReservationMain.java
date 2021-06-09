@@ -4,6 +4,7 @@ import config.DatabaseConnection;
 import config.ExampleDataInsert;
 import menu.MainMenu;
 
+
 public class HotelReservationMain {
     public static void main(String[] args) {
         MainMenu mainMenu = new MainMenu();

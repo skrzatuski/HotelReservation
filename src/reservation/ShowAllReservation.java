@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ShowAllReservation {
-    DisplayMenu displaymenu;
     Connection con = null;
     Statement stt = null;
     Reservation reservation;

@@ -2,8 +2,6 @@ package menu;
 
 import displays.DisplayMenu;
 import rooms.RoomGenerator;
-import rooms.ShowAllRooms;
-
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
 
