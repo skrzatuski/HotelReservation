@@ -1,5 +1,6 @@
 import config.CreateDatabase;
 import config.DBExistCheck;
+import config.DatabaseConnection;
 import config.ExampleDataInsert;
 import menu.MainMenu;
 
@@ -14,10 +15,14 @@ public class HotelReservationMain {
         if(dbConnectionCheck.isDbStatus()){
             System.out.println("Connection succesfull");
         }else{
-            System.out.println("Creating new database");
-            createDatabase.CreateDB();
-            createDatabase.CreateTables();
-            exampleDataInsert.DataInsert();
+            System.out.println("Proba utworzenia nowej");
+            if(DatabaseConnection.getCon()==null){
+                System.out.println("Brak polaczenia z db");
+            }else{
+                createDatabase.CreateDB();
+                createDatabase.CreateTables();
+                exampleDataInsert.DataInsert();
+            }
         }
         /*Main loop*/
         do{

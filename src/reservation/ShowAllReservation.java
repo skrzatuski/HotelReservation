@@ -15,8 +15,6 @@ public class ShowAllReservation {
     Reservation reservation;
     final private String SQL_SELECT_RESERVATION = "SELECT * FROM rezerwacje";
     public void showReservation() {
-        displaymenu = new DisplayMenu();
-        displaymenu.displayReservationMenu();
         reservation = new Reservation();
         try{
             con = DatabaseConnection.getCon();
@@ -35,6 +33,8 @@ public class ShowAllReservation {
         } catch (
                 SQLException throwables) {
             throwables.printStackTrace();
+        }catch(Exception a){
+            System.out.println("Brak połaczenia z baza danych");
         }
     }
 }

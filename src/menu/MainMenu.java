@@ -12,10 +12,8 @@ public class MainMenu {
     private final DisplayMenu displayMenu = new DisplayMenu();
     ReservationMenu reservationMenu;
     RoomGenerator roomGenerator;
-    ShowAllRooms showAllRooms;
     Scanner input = new Scanner(System.in);
     RoomMenu roomMenu;
-
     public void ChooseMenu() {
             roomMenu = new RoomMenu();
             reservationMenu = new ReservationMenu();

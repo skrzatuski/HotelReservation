@@ -28,13 +28,15 @@ public class CreateDatabase {
             " FOREIGN KEY (idpokoju) REFERENCES pokoje(idpokoju) );";
 
     public void CreateDB(){
+        System.out.println("Creating new database");
         try{
             Connection con = DriverManager.getConnection(database.DB_URL, database.DB_USER, database.DB_PASSWORD);
             PreparedStatement preparedStatement = con.prepareStatement(SQL_CREATE_DB);
             preparedStatement.executeUpdate();
-
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            System.out.println(throwables);
+        }catch(Exception a){
+            System.out.println(a);
         }
     }
     public void CreateTables(){
@@ -43,13 +45,17 @@ public class CreateDatabase {
             PreparedStatement preparedStatement = con.prepareStatement(SQL_CREATE_TABLE_POKOJE);
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            System.out.println(throwables);
+        }catch(Exception a){
+            System.out.println(a);
         }
         try{
             PreparedStatement preparedStatement = con.prepareStatement(SQL_CREATE_TABLE_REZERWACJE);
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            System.out.println(throwables);
+        }catch(Exception a){
+            System.out.println("Brak połaczenia z baza danych");
         }
     }
 }

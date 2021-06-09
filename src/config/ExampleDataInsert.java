@@ -16,13 +16,17 @@ public class ExampleDataInsert {
             PreparedStatement preparedStatement = con.prepareStatement(SQL_POKOJE_INSERT);
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            System.out.println(throwables);
+        }catch(Exception a){
+            System.out.println("Brak połaczenia z baza danych");
         }
         try{
             PreparedStatement preparedStatement = con.prepareStatement(SQL_REZERWACJE_INSERT);
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            System.out.println(throwables);
+        }catch(Exception a){
+            System.out.println("Brak połaczenia z baza danych");
         }
     }
 }

@@ -15,19 +15,20 @@ public class ShowAllRooms {
         room = new Room();
         try {
             connection = DatabaseConnection.getCon();
-            statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SQL_SELECT_POKOJE);
-            while(resultSet.next()){
-                room.setRoomId(resultSet.getInt("idpokoju"));
-                room.setRoomName(resultSet.getString("nazwapokoju"));
-                room.setRoomPersonCap(resultSet.getInt("iloscosob"));
-                room.setPrice(resultSet.getInt("cena"));
-                System.out.println(room);
+            if(connection !=null) {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(SQL_SELECT_POKOJE);
+                while (resultSet.next()) {
+                    room.setRoomId(resultSet.getInt("idpokoju"));
+                    room.setRoomName(resultSet.getString("nazwapokoju"));
+                    room.setRoomPersonCap(resultSet.getInt("iloscosob"));
+                    room.setPrice(resultSet.getInt("cena"));
+                    System.out.println(room);
+                }
+                resultSet.close();
             }
-            resultSet.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }
