@@ -21,18 +21,18 @@ public class MainMenu {
                 displayMenu.mainChooseMenu();
                 int choice = input.nextInt();
                 switch (choice) {
-                    case 1:
+                    case 1 -> {
                         reservationMenu.chooseMenu();
                         mainMenuStatus.set(false);
-                        break;
-                    case 2:
+                    }
+                    case 2 -> {
                         roomMenu.chooseMenu();
                         mainMenuStatus.set(false);
-                        break;
-                    case 3:
+                    }
+                    case 3 -> {
                         System.exit(0);
                         mainMenuStatus.set(false);
-                        break;
+                    }
                 }
                 if (choice != 1 && choice != 2 && choice != 3) {
                     System.out.println("Zły wybór");

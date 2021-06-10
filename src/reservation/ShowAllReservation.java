@@ -31,9 +31,8 @@ public class ShowAllReservation {
                 }
                 rs.close();
             }
-        } catch (
-                SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException throwables) {
+            System.out.println("SQLException happend...");
         }
     }
 }

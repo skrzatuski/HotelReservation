@@ -4,6 +4,7 @@ import config.DatabaseConnection;
 import inputs.Room;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class ShowAllRooms {
@@ -27,6 +28,8 @@ public class ShowAllRooms {
                 }
                 resultSet.close();
             }
+        } catch (SQLException a){
+            System.out.println("SQLException happend...");
         } catch (Exception e) {
             e.printStackTrace();
         }

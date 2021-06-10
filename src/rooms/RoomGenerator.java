@@ -26,7 +26,7 @@ public class RoomGenerator {
                 System.out.println(room);
             }
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            System.out.println("SQLException happend ...");;
         }
     }
 }

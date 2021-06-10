@@ -4,6 +4,7 @@ import static config.Database.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class CreateDatabase {
     String SQL_CREATE_DB = "CREATE DATABASE hotel";
@@ -30,6 +31,8 @@ public class CreateDatabase {
             Connection con = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             PreparedStatement preparedStatement = con.prepareStatement(SQL_CREATE_DB);
             preparedStatement.executeUpdate();
+        }catch(SQLException a){
+            System.out.println("SQLException happend...");
         }catch(Exception a){
             System.out.println("Exception happend...");
         }
@@ -39,13 +42,18 @@ public class CreateDatabase {
         try{
             PreparedStatement preparedStatement = con.prepareStatement(SQL_CREATE_TABLE_POKOJE);
             preparedStatement.executeUpdate();
-        }catch(Exception a){
+        }catch(SQLException a){
+            System.out.println("SQLException happend...");
+        }catch(Exception ex){
             System.out.println("Exception happend...");
         }
         try{
             PreparedStatement preparedStatement = con.prepareStatement(SQL_CREATE_TABLE_REZERWACJE);
             preparedStatement.executeUpdate();
-        }catch(Exception a){
+        }catch(SQLException a){
+            System.out.println("SQLException happend...");
+        }
+        catch(Exception ex){
             System.out.println("Exception happend...");
         }
     }
