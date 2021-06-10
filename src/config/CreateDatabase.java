@@ -1,41 +1,37 @@
 package config;
 
-
+import static config.Database.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class CreateDatabase {
-    Database database = new Database();
     String SQL_CREATE_DB = "CREATE DATABASE hotel";
-    String SQL_CREATE_TABLE_POKOJE = "CREATE TABLE pokoje(\n" +
-            "   idpokoju   INT AUTO_INCREMENT,\n" +
-            "   nazwapokoju text      NOT NULL,\n" +
-            "   iloscosob  INT              NOT NULL,\n" +
-            "   cena  INT NOT NULL ,      \n" +
+    String SQL_CREATE_TABLE_POKOJE = "CREATE TABLE pokoje(" +
+            "   idpokoju   INT AUTO_INCREMENT," +
+            "   nazwapokoju text      NOT NULL," +
+            "   iloscosob  INT              NOT NULL," +
+            "   cena  INT NOT NULL ,      " +
             "   PRIMARY KEY (idpokoju));";
 
-    String SQL_CREATE_TABLE_REZERWACJE = "CREATE TABLE rezerwacje( \n" +
-            " idzamowienia   INT AUTO_INCREMENT, \n" +
-            " imie text      NOT NULL, \n" +
-            " nazwisko  text NOT NULL,\n" +
-            " idpokoju  INT NOT NULL ,      \n" +
-            " dataod  date NOT NULL ,     \n" +
-            " datado  date NOT NULL ,      \n" +
-            " PRIMARY KEY (idzamowienia),\n" +
+    String SQL_CREATE_TABLE_REZERWACJE = "CREATE TABLE rezerwacje( " +
+            " idzamowienia   INT AUTO_INCREMENT, " +
+            " imie text      NOT NULL, " +
+            " nazwisko  text NOT NULL," +
+            " idpokoju  INT NOT NULL ,      " +
+            " dataod  date NOT NULL ,     " +
+            " datado  date NOT NULL ,      " +
+            " PRIMARY KEY (idzamowienia)," +
             " FOREIGN KEY (idpokoju) REFERENCES pokoje(idpokoju) );";
 
     public void CreateDB(){
         System.out.println("Creating new database...");
         try{
-            Connection con = DriverManager.getConnection(database.DB_URL, database.DB_USER, database.DB_PASSWORD);
+            Connection con = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             PreparedStatement preparedStatement = con.prepareStatement(SQL_CREATE_DB);
             preparedStatement.executeUpdate();
-        } catch (SQLException throwables) {
-            System.out.println(throwables);
         }catch(Exception a){
-            System.out.println(a);
+            System.out.println("Exception happend...");
         }
     }
     public void CreateTables(){
@@ -43,18 +39,14 @@ public class CreateDatabase {
         try{
             PreparedStatement preparedStatement = con.prepareStatement(SQL_CREATE_TABLE_POKOJE);
             preparedStatement.executeUpdate();
-        } catch (SQLException throwables) {
-            System.out.println(throwables);
         }catch(Exception a){
-            System.out.println(a);
+            System.out.println("Exception happend...");
         }
         try{
             PreparedStatement preparedStatement = con.prepareStatement(SQL_CREATE_TABLE_REZERWACJE);
             preparedStatement.executeUpdate();
-        } catch (SQLException throwables) {
-            System.out.println(throwables);
         }catch(Exception a){
-            System.out.println("Brak połaczenia z baza danych");
+            System.out.println("Exception happend...");
         }
     }
 }
