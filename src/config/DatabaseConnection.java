@@ -12,5 +12,14 @@ public class DatabaseConnection {
         }
         return con;
     }
+    public static Connection getSqlCon(){
+        Connection con = null;
+        try {
+            con = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+        }catch(SQLException e){
+            System.out.println("Cant connect to SQL");
+        }
+        return con;
+    }
 }
 

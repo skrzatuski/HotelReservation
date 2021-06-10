@@ -4,6 +4,8 @@ import config.DatabaseConnection;
 import config.ExampleDataInsert;
 import menu.MainMenu;
 
+import java.sql.Connection;
+
 
 public class HotelReservationMain {
     public static void main(String[] args) {
@@ -11,8 +13,10 @@ public class HotelReservationMain {
         DBExistCheck dbConnectionCheck = new DBExistCheck();
         CreateDatabase createDatabase = new CreateDatabase();
         ExampleDataInsert exampleDataInsert = new ExampleDataInsert();
+        Connection con = DatabaseConnection.getSqlCon();
         /*Checking db*/
         dbConnectionCheck.checkIfDbExists();
+        if(con!=null){
         if(dbConnectionCheck.isDbStatus()){
             System.out.println("Connection succesfull");
         }else{
@@ -20,6 +24,7 @@ public class HotelReservationMain {
             createDatabase.CreateDB();
             createDatabase.CreateTables();
             exampleDataInsert.DataInsert();
+        }
         }
         /*Main loop*/
         do{
