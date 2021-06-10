@@ -1,42 +1,31 @@
 package config;
 
-import javax.xml.crypto.Data;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class DBExistCheck {
-    private String dbname;
-    private String catalogs;
-    boolean dbStatus = false;
-    Connection conDB = null;
-    ResultSet rs = null;
-    public void checkIfDbExists(){
-        try {
-            dbname = "hotel";
-            conDB = DatabaseConnection.getCon();
-
-            if (conDB != null) {
-                dbStatus = true;
-                System.out.println("Connection successful, checking db exists");
-                rs = conDB.getMetaData().getCatalogs();
-                while (rs.next()) {
-                    catalogs = rs.getString(1);
-                    if (dbname.equals(catalogs)) {
-                        System.out.println("Database " + dbname + " exists");
-                    }
-                }
-            }else{
-                System.out.println("Unable to connect to DB");
-                dbStatus = false;
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+    Connection con = null;
+    Connection conSQL = null;
+    CreateDatabase createDatabase = new CreateDatabase();
+    ExampleDataInsert exampleDataInsert = new ExampleDataInsert();
+    public boolean checkIfDbExists(){
+        con = DatabaseConnection.getCon();
+        if (con != null) {
+            System.out.println("Connection successful, database exists");
+            return true;
+        }else{
+            System.out.println("Unable to connect to DB");
+            return false;
         }
     }
-
-    public boolean isDbStatus() {
-        return dbStatus;
-    }
-
+    public void addDatabase(){
+        conSQL = DatabaseConnection.getSqlCon();
+        if(conSQL != null){
+            if(!checkIfDbExists()){
+                    System.out.println("Proba utworzenia nowej");
+                    createDatabase.CreateDB();
+                    createDatabase.CreateTables();
+                    exampleDataInsert.DataInsert();
+                }
+            }
+        }
 }
