@@ -17,10 +17,10 @@ public class HotelReservationMain {
             System.out.println("Connection succesfull");
         }else{
             System.out.println("Proba utworzenia nowej");
-                createDatabase.CreateDB();
-                createDatabase.CreateTables();
-                exampleDataInsert.DataInsert();
-            }
+            createDatabase.CreateDB();
+            createDatabase.CreateTables();
+            exampleDataInsert.DataInsert();
+        }
         /*Main loop*/
         do{
             mainMenu.ChooseMenu();

@@ -10,10 +10,12 @@ public class DBExistCheck {
     boolean dbStatus = false;
     Connection con = null;
     ResultSet rs = null;
+    DatabaseConnection databaseConnection;
     public void checkIfDbExists(){
         try {
             dbname = "hotel";
             con = DatabaseConnection.getCon();
+
             if (con != null) {
                 dbStatus = true;
                 System.out.println("Connection successful, checking db exists");
@@ -25,11 +27,11 @@ public class DBExistCheck {
                     }
                 }
             }else{
-                System.out.println("Brak wlasciwej bazy danych");
+                System.out.println("Unable to connect to DB");
                 dbStatus = false;
             }
         } catch (SQLException throwables) {
-            System.out.println(throwables);
+            throwables.printStackTrace();
         }
     }
 
