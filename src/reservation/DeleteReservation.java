@@ -38,9 +38,8 @@ public class DeleteReservation {
                          }while(deleteVerification.get());
                  }
         }catch(SQLException throwables) {
-                throwables.printStackTrace();
-        }catch(Exception a) {
-            System.out.println("Brak połaczenia z baza danych");
+                //throwables.printStackTrace();
+            System.out.println("SQLException happend...");
         }
     }
 }

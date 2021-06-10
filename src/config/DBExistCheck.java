@@ -2,6 +2,7 @@ package config;
 
 import java.sql.Connection;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class DBExistCheck {
     Connection con = null;
@@ -14,26 +15,34 @@ public class DBExistCheck {
             System.out.println("Connection successful, database exists");
             return true;
         }else{
-            System.out.println("Unable to connect to DB");
+            System.out.println("Brak bazy danych");
             return false;
         }
     }
     public void addDatabase(){
         Scanner scanner = new Scanner(System.in);
-
         conSQL = DatabaseConnection.getSqlCon();
+        AtomicBoolean addDatabaseVerification = new AtomicBoolean(false);
         if(conSQL != null){
             if(!checkIfDbExists()){
-                    System.out.println("Czy chcesz utworzyc baze danych?");
+                do {
+                    System.out.println("Czy chcesz utworzyc baze danych? T)ak/N)ie");
                     String confirmation = scanner.next().toUpperCase();
-                    if(confirmation.equals("T")) {
+                    if (confirmation.equals("T")) {
                         createDatabase.CreateDB();
                         createDatabase.CreateTables();
                         exampleDataInsert.DataInsert();
-                    }else
-                    {
-
+                        System.out.println("Utworzono baze danych!");
+                        addDatabaseVerification.set(false);
+                    } else if (confirmation.equals("N")) {
+                        System.out.println("Nie utworzono bazy danych");
+                        addDatabaseVerification.set(false);
                     }
+                    if (!confirmation.equals("T") && !confirmation.equals("N")) {
+                        System.out.println("Zly wybor");
+                        addDatabaseVerification.set(true);
+                    }
+                }while(addDatabaseVerification.get());
                 }
             }
         }

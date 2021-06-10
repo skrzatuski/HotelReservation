@@ -27,7 +27,7 @@ public class CreateDatabase {
             " FOREIGN KEY (idpokoju) REFERENCES pokoje(idpokoju) );";
 
     public void CreateDB(){
-        System.out.println("Creating new database");
+        System.out.println("Creating new database...");
         try{
             Connection con = DriverManager.getConnection(database.DB_URL, database.DB_USER, database.DB_PASSWORD);
             PreparedStatement preparedStatement = con.prepareStatement(SQL_CREATE_DB);
