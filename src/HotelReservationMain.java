@@ -17,18 +17,13 @@ public class HotelReservationMain {
             System.out.println("Connection succesfull");
         }else{
             System.out.println("Proba utworzenia nowej");
-            if(DatabaseConnection.getCon()==null){
-                System.out.println("Brak polaczenia z db");
-            }else{
                 createDatabase.CreateDB();
                 createDatabase.CreateTables();
                 exampleDataInsert.DataInsert();
             }
-        }
         /*Main loop*/
         do{
             mainMenu.ChooseMenu();
         }while(true);
     }
 }
-

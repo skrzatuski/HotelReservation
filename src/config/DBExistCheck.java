@@ -18,13 +18,13 @@ public class DBExistCheck {
                 dbStatus = true;
                 System.out.println("Connection successful, checking db exists");
                 rs = con.getMetaData().getCatalogs();
-            while (rs.next()) {
-                catalogs = rs.getString(1);
-                if (dbname.equals(catalogs)) {
-                    System.out.println("Database " + dbname + " exists");
+                while (rs.next()) {
+                    catalogs = rs.getString(1);
+                    if (dbname.equals(catalogs)) {
+                        System.out.println("Database " + dbname + " exists");
+                    }
                 }
-            }
-        }else{
+            }else{
                 System.out.println("Brak wlasciwej bazy danych");
                 dbStatus = false;
             }
