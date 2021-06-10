@@ -8,7 +8,6 @@ import java.sql.SQLException;
 
 public class CreateDatabase {
     Database database = new Database();
-
     String SQL_CREATE_DB = "CREATE DATABASE hotel";
     String SQL_CREATE_TABLE_POKOJE = "CREATE TABLE pokoje(\n" +
             "   idpokoju   INT AUTO_INCREMENT,\n" +

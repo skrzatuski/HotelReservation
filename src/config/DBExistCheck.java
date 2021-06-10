@@ -1,6 +1,7 @@
 package config;
 
 import java.sql.Connection;
+import java.util.Scanner;
 
 public class DBExistCheck {
     Connection con = null;
@@ -18,13 +19,21 @@ public class DBExistCheck {
         }
     }
     public void addDatabase(){
+        Scanner scanner = new Scanner(System.in);
+
         conSQL = DatabaseConnection.getSqlCon();
         if(conSQL != null){
             if(!checkIfDbExists()){
-                    System.out.println("Proba utworzenia nowej");
-                    createDatabase.CreateDB();
-                    createDatabase.CreateTables();
-                    exampleDataInsert.DataInsert();
+                    System.out.println("Czy chcesz utworzyc baze danych?");
+                    String confirmation = scanner.next().toUpperCase();
+                    if(confirmation.equals("T")) {
+                        createDatabase.CreateDB();
+                        createDatabase.CreateTables();
+                        exampleDataInsert.DataInsert();
+                    }else
+                    {
+
+                    }
                 }
             }
         }

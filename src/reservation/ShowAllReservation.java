@@ -15,25 +15,25 @@ public class ShowAllReservation {
     final private String SQL_SELECT_RESERVATION = "SELECT * FROM rezerwacje";
     public void showReservation() {
         reservation = new Reservation();
-        try{
+        try {
             con = DatabaseConnection.getCon();
-            stt = con.createStatement();
-            ResultSet rs = stt.executeQuery(SQL_SELECT_RESERVATION);
-            while(rs.next()){
-                reservation.setReservationId(rs.getInt("idzamowienia"));
-                reservation.setName(rs.getString("imie"));
-                reservation.setSurname(rs.getString("nazwisko"));
-                reservation.setRoomId(rs.getInt("idpokoju"));
-                reservation.setDateStart(rs.getString("dataod"));
-                reservation.setDateStop(rs.getString("datado"));
-                System.out.println(reservation);
+            if (con != null) {
+                stt = con.createStatement();
+                ResultSet rs = stt.executeQuery(SQL_SELECT_RESERVATION);
+                while (rs.next()) {
+                    reservation.setReservationId(rs.getInt("idzamowienia"));
+                    reservation.setName(rs.getString("imie"));
+                    reservation.setSurname(rs.getString("nazwisko"));
+                    reservation.setRoomId(rs.getInt("idpokoju"));
+                    reservation.setDateStart(rs.getString("dataod"));
+                    reservation.setDateStop(rs.getString("datado"));
+                    System.out.println(reservation);
+                }
+                rs.close();
             }
-            rs.close();
         } catch (
                 SQLException throwables) {
             throwables.printStackTrace();
-        }catch(Exception a){
-            System.out.println("Brak połaczenia z baza danych");
         }
     }
 }
