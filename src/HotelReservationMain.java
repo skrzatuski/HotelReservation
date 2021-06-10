@@ -17,14 +17,14 @@ public class HotelReservationMain {
         /*Checking db*/
         dbConnectionCheck.checkIfDbExists();
         if(con!=null){
-        if(dbConnectionCheck.isDbStatus()){
-            System.out.println("Connection succesfull");
-        }else{
-            System.out.println("Proba utworzenia nowej");
-            createDatabase.CreateDB();
-            createDatabase.CreateTables();
-            exampleDataInsert.DataInsert();
-        }
+            if(dbConnectionCheck.isDbStatus()){
+                System.out.println("Connection succesfull");
+            }else{
+                System.out.println("Proba utworzenia nowej");
+                createDatabase.CreateDB();
+                createDatabase.CreateTables();
+                exampleDataInsert.DataInsert();
+            }
         }
         /*Main loop*/
         do{
