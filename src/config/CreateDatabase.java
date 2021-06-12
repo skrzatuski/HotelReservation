@@ -32,9 +32,9 @@ public class CreateDatabase {
             PreparedStatement preparedStatement = con.prepareStatement(SQL_CREATE_DB);
             preparedStatement.executeUpdate();
         }catch(SQLException a){
-            System.out.println("SQLException happend...");
+            System.out.println("UPS cos poszlo nie tak ...");
         }catch(Exception a){
-            System.out.println("Exception happend...");
+            System.out.println("UPS cos poszlo nie tak ...");
         }
     }
     public void CreateTables(){
@@ -43,18 +43,18 @@ public class CreateDatabase {
             PreparedStatement preparedStatement = con.prepareStatement(SQL_CREATE_TABLE_POKOJE);
             preparedStatement.executeUpdate();
         }catch(SQLException a){
-            System.out.println("SQLException happend...");
+            System.out.println("UPS cos poszlo nie tak ...");
         }catch(Exception ex){
-            System.out.println("Exception happend...");
+            System.out.println("UPS cos poszlo nie tak ...");
         }
         try{
             PreparedStatement preparedStatement = con.prepareStatement(SQL_CREATE_TABLE_REZERWACJE);
             preparedStatement.executeUpdate();
         }catch(SQLException a){
-            System.out.println("SQLException happend...");
+            System.out.println("UPS cos poszlo nie tak ...");
         }
         catch(Exception ex){
-            System.out.println("Exception happend...");
+            System.out.println("UPS cos poszlo nie tak ...");
         }
     }
 }

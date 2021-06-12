@@ -2,6 +2,8 @@ package menu;
 
 import displays.DisplayMenu;
 import rooms.RoomGenerator;
+
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -12,7 +14,7 @@ public class MainMenu {
     RoomGenerator roomGenerator;
     Scanner input = new Scanner(System.in);
     RoomMenu roomMenu;
-    public void ChooseMenu() {
+    public void ChooseMenu() throws FileNotFoundException {
             roomMenu = new RoomMenu();
             reservationMenu = new ReservationMenu();
             roomGenerator = new RoomGenerator();

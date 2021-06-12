@@ -1,4 +1,4 @@
-package ValidationData;
+package validationdata;
 
 import config.DatabaseConnection;
 import java.sql.*;

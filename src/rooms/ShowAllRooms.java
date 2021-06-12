@@ -29,7 +29,7 @@ public class ShowAllRooms {
                 resultSet.close();
             }
         } catch (SQLException a){
-            System.out.println("SQLException happend...");
+            System.out.println("UPS cos poszlo nie tak ...");
         } catch (Exception e) {
             e.printStackTrace();
         }

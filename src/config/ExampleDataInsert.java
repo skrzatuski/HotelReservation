@@ -18,7 +18,7 @@ public class ExampleDataInsert {
         } catch (SQLException throwables) {
             System.out.println(throwables);
         }catch(Exception a){
-            System.out.println("Brak połaczenia z baza danych");
+            System.out.println("UPS cos poszlo nie tak ...");
         }
         try{
             PreparedStatement preparedStatement = con.prepareStatement(SQL_REZERWACJE_INSERT);
@@ -26,7 +26,7 @@ public class ExampleDataInsert {
         } catch (SQLException throwables) {
             System.out.println(throwables);
         }catch(Exception a){
-            System.out.println("Brak połaczenia z baza danych");
+            System.out.println("UPS cos poszlo nie tak ...");
         }
     }
 }

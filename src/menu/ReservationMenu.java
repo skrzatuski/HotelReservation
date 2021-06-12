@@ -5,6 +5,7 @@ import reservation.CreateReservation;
 import reservation.DeleteReservation;
 import reservation.ShowAllReservation;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -15,7 +16,7 @@ public class ReservationMenu {
     private CreateReservation createReservation;
     private DeleteReservation deleteReservation;
     DisplayMenu displayMenu;
-    public void chooseMenu() {
+    public void chooseMenu() throws FileNotFoundException {
         displayMenu = new DisplayMenu();
         createReservation = new CreateReservation();
         showAllReservation = new ShowAllReservation();

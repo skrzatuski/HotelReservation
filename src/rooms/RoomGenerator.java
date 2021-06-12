@@ -26,7 +26,7 @@ public class RoomGenerator {
                 System.out.println(room);
             }
         } catch (SQLException throwables) {
-            System.out.println("SQLException happend ...");;
+            System.out.println("UPS cos poszlo nie tak ...");
         }
     }
 }

@@ -1,4 +1,6 @@
 package config;
+import errorscatcher.StackTracerFile;
+
 import java.sql.*;
 import static config.Database.*;
 

@@ -1,8 +1,8 @@
 package inputs;
 
 
-import ValidationData.DataCheck;
-import ValidationData.RoomExistCheck;
+import validationdata.DataCheck;
+import validationdata.RoomExistCheck;
 import java.util.Scanner;
 
 public class ReservationUserInput {

@@ -1,7 +1,10 @@
 package reservation;
 
 import config.DatabaseConnection;
+import errorscatcher.StackTracerFile;
 import inputs.*;
+
+import java.io.FileNotFoundException;
 import java.sql.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -11,7 +14,8 @@ public class CreateReservation {
     private Reservation reservation;
     private ReservationUserInput reservationUserInput;
     private CheckRoomAvailable checkRoomAvailable;
-    public void createReservation1() {
+    StackTracerFile stackTracerFile = new StackTracerFile();
+    public void createReservation1() throws FileNotFoundException {
         reservationUserInput = new ReservationUserInput();
         reservation = new Reservation();
         checkRoomAvailable = new CheckRoomAvailable();
@@ -37,8 +41,9 @@ public class CreateReservation {
         } catch (
                 SQLException throwables) {
             throwables.printStackTrace();
-        }catch(Exception a){
-            System.out.println("Brak połaczenia z baza danych");
+        }catch(Exception ex){
+            stackTracerFile.createFile(ex);
+            System.out.println("UPS cos poszlo nie tak ...");
         }
     }
 }

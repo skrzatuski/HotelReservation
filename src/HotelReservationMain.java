@@ -1,14 +1,15 @@
 import config.DBExistCheck;
-import config.DatabaseConnection;
 import menu.MainMenu;
-import java.sql.Connection;
+
+import java.io.FileNotFoundException;
 
 
 public class HotelReservationMain {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         MainMenu mainMenu = new MainMenu();
         DBExistCheck dbConnectionCheck = new DBExistCheck();
         dbConnectionCheck.addDatabase();
+        stackPrintToFile stackPrintToFile = new stackPrintToFile();
         /*Main loop*/
         do{
             mainMenu.ChooseMenu();

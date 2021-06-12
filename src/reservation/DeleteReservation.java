@@ -39,7 +39,7 @@ public class DeleteReservation {
                  }
         }catch(SQLException throwables) {
                 //throwables.printStackTrace();
-            System.out.println("SQLException happend...");
+            System.out.println("UPS cos poszlo nie tak ...");
         }
     }
 }
