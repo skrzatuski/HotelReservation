@@ -9,7 +9,6 @@ public class HotelReservationMain {
         MainMenu mainMenu = new MainMenu();
         DBExistCheck dbConnectionCheck = new DBExistCheck();
         dbConnectionCheck.addDatabase();
-        stackPrintToFile stackPrintToFile = new stackPrintToFile();
         /*Main loop*/
         do{
             mainMenu.ChooseMenu();

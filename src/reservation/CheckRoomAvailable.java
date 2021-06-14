@@ -1,6 +1,9 @@
 package reservation;
 
 import config.*;
+import errorscatcher.StackTracerFile;
+
+import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,7 +13,8 @@ public class CheckRoomAvailable{
     private Statement stt = null;
     private String sql;
     private ResultSet resultSet;
-    public boolean checkRoom(String dateStart, String dateStop, int roomId) {
+    StackTracerFile stackTracerFile = new StackTracerFile();
+    public boolean checkRoom(String dateStart, String dateStop, int roomId) throws FileNotFoundException {
         try {
             DatabaseConnection.getCon();
             stt = DatabaseConnection.getCon().createStatement();
@@ -25,6 +29,7 @@ public class CheckRoomAvailable{
             checkRoomStatus();
         } catch (
                 SQLException throwables) {
+            stackTracerFile.saveExceptionToFile(throwables);
             throwables.printStackTrace();
         }
         return roomStatus;

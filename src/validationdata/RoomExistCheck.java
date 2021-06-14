@@ -1,11 +1,11 @@
 package validationdata;
 
 import config.DatabaseConnection;
+import java.io.FileNotFoundException;
 import java.sql.*;
 
 public class RoomExistCheck {
-
-    public boolean roomExist(int roomId){
+    public boolean roomExist(int roomId) throws FileNotFoundException {
         String SQL_SELECT = "SELECT idpokoju FROM pokoje WHERE idpokoju=" + roomId;
         Connection con = DatabaseConnection.getCon();
         Statement stt = null;

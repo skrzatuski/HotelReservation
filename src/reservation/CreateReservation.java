@@ -40,9 +40,10 @@ public class CreateReservation {
             }
         } catch (
                 SQLException throwables) {
+            stackTracerFile.saveExceptionToFile(throwables);
             throwables.printStackTrace();
         }catch(Exception ex){
-            stackTracerFile.createFile(ex);
+            stackTracerFile.saveExceptionToFile(ex);
             System.out.println("UPS cos poszlo nie tak ...");
         }
     }

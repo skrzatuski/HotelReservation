@@ -1,7 +1,10 @@
 package rooms;
 
 import config.DatabaseConnection;
+import errorscatcher.StackTracerFile;
 import inputs.Room;
+
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +14,8 @@ public class ShowAllRooms {
     Room room;
     Connection connection;
     Statement statement;
-    public void showAllRooms(){
+    StackTracerFile stackTracerFile = new StackTracerFile();
+    public void showAllRooms() throws FileNotFoundException {
         String SQL_SELECT_POKOJE = "SELECT * FROM pokoje";
         room = new Room();
         try {
@@ -28,10 +32,12 @@ public class ShowAllRooms {
                 }
                 resultSet.close();
             }
-        } catch (SQLException a){
+        } catch (SQLException sqlEx){
+            stackTracerFile.saveExceptionToFile(sqlEx);
             System.out.println("UPS cos poszlo nie tak ...");
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            stackTracerFile.saveExceptionToFile(ex);
+            ex.printStackTrace();
         }
     }
 }

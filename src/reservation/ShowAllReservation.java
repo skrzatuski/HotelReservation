@@ -1,9 +1,10 @@
 package reservation;
 
-import displays.*;
 import config.DatabaseConnection;
+import errorscatcher.StackTracerFile;
 import inputs.Reservation;
 
+import java.io.FileNotFoundException;
 import java.sql.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,7 +14,8 @@ public class ShowAllReservation {
     Statement stt = null;
     Reservation reservation;
     final private String SQL_SELECT_RESERVATION = "SELECT * FROM rezerwacje";
-    public void showReservation() {
+    StackTracerFile stackTracerFile = new StackTracerFile();
+    public void showReservation() throws FileNotFoundException {
         reservation = new Reservation();
         try {
             con = DatabaseConnection.getCon();
@@ -32,6 +34,7 @@ public class ShowAllReservation {
                 rs.close();
             }
         } catch (SQLException throwables) {
+            stackTracerFile.saveExceptionToFile(throwables);
             System.out.println("UPS cos poszlo nie tak ...");
         }
     }

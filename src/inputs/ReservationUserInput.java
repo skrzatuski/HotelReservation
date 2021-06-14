@@ -3,6 +3,8 @@ package inputs;
 
 import validationdata.DataCheck;
 import validationdata.RoomExistCheck;
+
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class ReservationUserInput {
@@ -11,7 +13,7 @@ public class ReservationUserInput {
     RoomExistCheck roomExistCheck = new RoomExistCheck();
 
     Scanner scannerUserInput = new Scanner(System.in);
-    public void readReservationUserInput(){
+    public void readReservationUserInput() throws FileNotFoundException {
         reservation = new Reservation();
         userInputFirstNameSurname();
         userInputRoomID();
@@ -35,7 +37,7 @@ public class ReservationUserInput {
                 } while (dataCheck.checkingData(reservation.getDateStop()));
             }while(dataCheck.isDataStopGreaterThanDataStart(reservation.getDateStart(), reservation.getDateStop()));
     }
-    public void userInputRoomID(){
+    public void userInputRoomID() throws FileNotFoundException {
             do {
                     System.out.println("Podaj nr pokoju: ");
                     if(scannerUserInput.hasNextInt()) {

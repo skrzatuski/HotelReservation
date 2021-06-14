@@ -1,5 +1,6 @@
 package config;
 
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -9,7 +10,7 @@ public class DBExistCheck {
     Connection conSQL = null;
     CreateDatabase createDatabase = new CreateDatabase();
     ExampleDataInsert exampleDataInsert = new ExampleDataInsert();
-    public boolean checkIfDbExists(){
+    public boolean checkIfDbExists() throws FileNotFoundException {
         con = DatabaseConnection.getCon();
         if (con != null) {
             System.out.println("Connection successful, database exists");
@@ -19,7 +20,7 @@ public class DBExistCheck {
             return false;
         }
     }
-    public void addDatabase(){
+    public void addDatabase() throws FileNotFoundException {
         Scanner scanner = new Scanner(System.in);
         conSQL = DatabaseConnection.getSqlCon();
         AtomicBoolean addDatabaseVerification = new AtomicBoolean(false);

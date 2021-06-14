@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.util.Date;
 
 public class StackTracerFile {
-    public void createFile(Exception e) throws FileNotFoundException {
+    public void saveExceptionToFile(Exception e) throws FileNotFoundException {
         try {
             Date date = new Date();
             String d1 = date.toString();

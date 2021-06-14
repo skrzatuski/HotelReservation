@@ -1,13 +1,17 @@
 package rooms;
 
 import config.DatabaseConnection;
+import errorscatcher.StackTracerFile;
 import inputs.*;
+
+import java.io.FileNotFoundException;
 import java.sql.*;
 public class RoomGenerator {
     Connection connection;
     RoomGeneratorUserInput roomGeneratorUserInput;
     Room room;
-    public void createRoom(){
+    StackTracerFile stackTracerFile = new StackTracerFile();
+    public void createRoom() throws FileNotFoundException {
         roomGeneratorUserInput = new RoomGeneratorUserInput();
         room = new Room();
         String SQL_INSERT_VALUE = "INSERT INTO pokoje (nazwapokoju,iloscosob,cena) VALUES (?,?,?)";
@@ -26,6 +30,7 @@ public class RoomGenerator {
                 System.out.println(room);
             }
         } catch (SQLException throwables) {
+            stackTracerFile.saveExceptionToFile(throwables);
             System.out.println("UPS cos poszlo nie tak ...");
         }
     }

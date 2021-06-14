@@ -1,7 +1,9 @@
 package reservation;
 
 import config.*;
+import errorscatcher.StackTracerFile;
 
+import java.io.FileNotFoundException;
 import java.sql.*;
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -11,7 +13,8 @@ public class DeleteReservation {
     private int reservationId;
     String conf;
     Scanner scanner = new Scanner(System.in);
-    public void deleteReservation() {
+    StackTracerFile stackTracerFile = new StackTracerFile();
+    public void deleteReservation() throws FileNotFoundException {
         try {
                 Connection con = DatabaseConnection.getCon();
                  if(con !=null)
@@ -38,7 +41,7 @@ public class DeleteReservation {
                          }while(deleteVerification.get());
                  }
         }catch(SQLException throwables) {
-                //throwables.printStackTrace();
+            stackTracerFile.saveExceptionToFile(throwables);
             System.out.println("UPS cos poszlo nie tak ...");
         }
     }
