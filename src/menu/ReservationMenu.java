@@ -7,12 +7,10 @@ import reservation.ShowAllReservation;
 import validationdata.ChooseMenuInputCheck;
 
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ReservationMenu {
     private int choice;
-    private Scanner scanner;
     private ShowAllReservation showAllReservation;
     private CreateReservation createReservation;
     private DeleteReservation deleteReservation;
@@ -23,7 +21,6 @@ public class ReservationMenu {
         showAllReservation = new ShowAllReservation();
         deleteReservation = new DeleteReservation();
         ChooseMenuInputCheck chooseMenuInputCheck = new ChooseMenuInputCheck();
-        scanner = new Scanner(System.in);
         AtomicBoolean reservationMenuStatus = new AtomicBoolean(false);
         do {
             displayMenu.reservationChooseMenu();

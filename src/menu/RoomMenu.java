@@ -6,12 +6,10 @@ import rooms.ShowAllRooms;
 import validationdata.ChooseMenuInputCheck;
 
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class RoomMenu {
     private int choice;
-    private Scanner scanner;
     private DisplayMenu displayMenu;
     private RoomGenerator roomGenerator;
     private ShowAllRooms showAllRooms;
@@ -19,7 +17,6 @@ public class RoomMenu {
         displayMenu = new DisplayMenu();
         roomGenerator = new RoomGenerator();
         showAllRooms = new ShowAllRooms();
-        scanner = new Scanner(System.in);
         ChooseMenuInputCheck chooseMenuInputCheck = new ChooseMenuInputCheck();
         AtomicBoolean roomMenuStatus = new AtomicBoolean(false);
         do {

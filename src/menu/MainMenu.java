@@ -5,7 +5,6 @@ import rooms.RoomGenerator;
 import validationdata.ChooseMenuInputCheck;
 
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 
@@ -13,7 +12,6 @@ public class MainMenu {
     private final DisplayMenu displayMenu = new DisplayMenu();
     ReservationMenu reservationMenu;
     RoomGenerator roomGenerator;
-    Scanner input = new Scanner(System.in);
     RoomMenu roomMenu;
     public void ChooseMenu() throws FileNotFoundException {
             roomMenu = new RoomMenu();

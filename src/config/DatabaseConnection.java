@@ -12,7 +12,7 @@ public class DatabaseConnection {
         Connection con = null;
         try {
             con = DriverManager.getConnection(DB_URL + DB_NAME, DB_USER, DB_PASSWORD);
-        }catch(SQLException sqlEx){
+        }catch(SQLException sqlEx) {
             stackTracerFile.saveExceptionToFile(sqlEx);
             System.out.println("Cant connect to database");
         }
