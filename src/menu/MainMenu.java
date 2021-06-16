@@ -36,10 +36,7 @@ public class MainMenu {
                             mainMenuStatus.set(false);
                         }
                     }
-                    if (choice != 1 && choice != 2 && choice != 3) {
-                        System.out.println("Zły wybór");
-                        mainMenuStatus.set(true);
-                    }
+                    mainMenuStatus.set(true);
             }while(mainMenuStatus.get());
     }
 }

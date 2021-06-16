@@ -44,7 +44,7 @@ public class ReservationMenu {
                 case 0 -> reservationMenuStatus.set(false);
             }
             if (choice != 1 && choice != 2 && choice != 3 && choice != 0) {
-                System.out.println("Zły wybór");
+               System.out.println("Zły wybór");
                 reservationMenuStatus.set(true);
             }
         }while(reservationMenuStatus.get());

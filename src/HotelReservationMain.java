@@ -9,9 +9,6 @@ public class HotelReservationMain {
         MainMenu mainMenu = new MainMenu();
         DBExistCheck dbConnectionCheck = new DBExistCheck();
         dbConnectionCheck.addDatabase();
-        /*Main loop*/
-        do{
-            mainMenu.ChooseMenu();
-        }while(true);
+        mainMenu.ChooseMenu();
     }
 }
